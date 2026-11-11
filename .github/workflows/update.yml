@@ -11,11 +11,14 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tin-tuc-sang
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
-      - run: node tin-tuc-sang/scripts/fetch-news.mjs
+      - run: node scripts/fetch-news.mjs
       - uses: actions/upload-pages-artifact@v3
         with: { path: tin-tuc-sang/public }
       - uses: actions/deploy-pages@v4
